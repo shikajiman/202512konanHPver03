@@ -79,14 +79,14 @@ export const Header: React.FC = () => {
              </span>
           </a>
           
-          {/* Apply Button (Visible on Mobile now) */}
+          {/* Apply Button */}
           <a 
             href={GOOGLE_FORM_URL}
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-theme-charcoal text-theme-base text-xs font-serif tracking-widest px-4 py-2 md:px-6 md:py-2.5 rounded-full shadow-lg hover:bg-theme-terracotta transition-colors duration-300"
           >
-            採用情報
+            今すぐ応募する
           </a>
         </div>
       </div>

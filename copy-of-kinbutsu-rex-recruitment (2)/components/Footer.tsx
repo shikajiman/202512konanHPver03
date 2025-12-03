@@ -8,6 +8,7 @@ export const Footer: React.FC = () => {
          <p className="text-xs text-theme-gray tracking-wider">
            &copy; {new Date().getFullYear()} Kinbutsu Rex Co., Ltd. Konan Komaki Center.
          </p>
+         <p className="text-[10px] text-theme-gray/50 mt-2">求人特設サイト</p>
        </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Layers, FileText, Plus, Minus, CheckCircle2, Clock, MessageCircle, ArrowDown } from 'lucide-react';
+import { Layers, FileText, Plus, Minus, CheckCircle2, Clock, MessageCircle, ArrowDown, Search } from 'lucide-react';
 import { JobType } from '../types';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -104,8 +104,8 @@ export const JobCards: React.FC = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-start w-full">
-      <div className="text-center mb-6 lg:mb-12 shrink-0 px-6">
+    <div className="w-full h-full flex flex-col">
+      <div className="text-center mb-6 lg:mb-8 shrink-0 px-6 pt-4 md:pt-0">
         <ScrollReveal>
           <h2 className="text-2xl md:text-5xl font-serif text-theme-charcoal mb-2 md:mb-4">
             仕事内容
@@ -117,44 +117,41 @@ export const JobCards: React.FC = () => {
         </ScrollReveal>
       </div>
       
-      {/* Cards Grid (Vertical on Mobile, 3 cols on Desktop) */}
-      <div className="
-        grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 
-        px-4 md:px-6 pb-8 md:pb-12 w-full
-      ">
+      {/* Cards Grid: Mobile(Vertical), PC(3 cols) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 px-4 md:px-6 w-full pb-12">
         {jobs.map((job, index) => (
           <div key={index} className="w-full">
             <ScrollReveal delay={index * 150}>
               <div 
                 onClick={() => toggleExpand(index)}
                 className={`
-                  group relative bg-white rounded-[1.5rem] md:rounded-[2rem] p-5 lg:p-8 cursor-pointer flex flex-col h-full
+                  group relative bg-white rounded-[1.5rem] md:rounded-[2rem] p-5 lg:p-6 cursor-pointer flex flex-col
                   transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] border border-transparent
                   ${expandedIndex === index 
                     ? 'shadow-2xl scale-[1.02] border-theme-terracotta/20 z-10' 
                     : 'shadow-soft hover:shadow-card hover:scale-[1.02] hover:-translate-y-1'}
                 `}
               >
-                <div className="flex justify-between items-start mb-3 lg:mb-6">
+                <div className="flex justify-between items-start mb-3 lg:mb-4">
                   <div className={`
-                    p-3 lg:p-5 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                    p-3 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                     ${expandedIndex === index ? 'bg-theme-terracotta text-white shadow-glow rotate-6 scale-110' : 'bg-theme-sand text-theme-charcoal group-hover:bg-theme-apricot group-hover:-rotate-6 group-hover:scale-110'}
                   `}>
                     {job.icon}
                   </div>
-                  <span className="font-serif text-3xl lg:text-5xl text-theme-sand font-bold opacity-30 group-hover:opacity-60 transition-opacity">
+                  <span className="font-serif text-3xl lg:text-4xl text-theme-sand font-bold opacity-30 group-hover:opacity-60 transition-opacity">
                     0{index + 1}
                   </span>
                 </div>
 
-                <h3 className="text-base lg:text-xl font-bold mb-1 text-theme-charcoal group-hover:text-theme-terracotta transition-colors">
+                <h3 className="text-base lg:text-lg font-bold mb-1 text-theme-charcoal group-hover:text-theme-terracotta transition-colors">
                   {job.title}
                 </h3>
                 <p className="text-[10px] md:text-xs font-serif text-theme-terracotta tracking-widest mb-2 md:mb-3 opacity-70">
                   {job.engTitle}
                 </p>
                 
-                <p className="text-theme-gray leading-relaxed text-xs md:text-sm mb-4 lg:mb-6 line-clamp-2 group-hover:line-clamp-none transition-all">
+                <p className="text-theme-gray leading-relaxed text-xs md:text-sm mb-4 line-clamp-2 group-hover:line-clamp-none transition-all">
                   {job.description}
                 </p>
                 
@@ -162,26 +159,26 @@ export const JobCards: React.FC = () => {
                   className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden">
-                     <div className="pt-4 mt-2 border-t border-theme-sand/50 space-y-4 md:space-y-6">
+                     <div className="pt-4 mt-2 border-t border-theme-sand/50 space-y-4">
                         
                         {/* Job Details */}
                         <div className="mb-4">
-                          <p className="text-xs md:text-sm text-theme-charcoal leading-loose whitespace-pre-wrap">
+                          <p className="text-xs text-theme-charcoal leading-loose whitespace-pre-wrap">
                             {job.details}
                           </p>
                         </div>
 
                         {/* Tasks & Skills Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                        <div className="flex flex-col gap-3">
                           {/* Tasks */}
-                          <div className="bg-theme-base/60 p-4 md:p-5 rounded-xl border border-theme-sand/40 hover:border-theme-terracotta/20 transition-colors">
-                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-3 md:mb-4 text-xs md:text-sm uppercase tracking-wider">
-                               <Clock className="w-4 h-4 text-theme-terracotta" /> 主な業務
+                          <div className="bg-theme-base/60 p-3 rounded-xl border border-theme-sand/40">
+                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-2 text-xs uppercase tracking-wider">
+                               <Clock className="w-3 h-3 text-theme-terracotta" /> 主な業務
                             </h4>
-                            <ul className="space-y-2 md:space-y-3">
+                            <ul className="space-y-1.5">
                               {job.tasks.map((task, i) => (
-                                <li key={i} className="text-xs md:text-sm text-theme-gray flex items-start gap-3 leading-relaxed group/item">
-                                  <span className="w-1.5 h-1.5 bg-theme-sand rounded-full mt-2 flex-shrink-0 group-hover/item:bg-theme-terracotta transition-colors"></span>
+                                <li key={i} className="text-[10px] md:text-xs text-theme-gray flex items-start gap-2 leading-relaxed">
+                                  <span className="w-1 h-1 bg-theme-sand rounded-full mt-1.5 flex-shrink-0"></span>
                                   <span className="flex-1">{task}</span>
                                 </li>
                               ))}
@@ -189,14 +186,14 @@ export const JobCards: React.FC = () => {
                           </div>
                           
                           {/* Skills */}
-                          <div className="bg-theme-base/60 p-4 md:p-5 rounded-xl border border-theme-sand/40 hover:border-theme-sage/20 transition-colors">
-                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-3 md:mb-4 text-xs md:text-sm uppercase tracking-wider">
-                               <CheckCircle2 className="w-4 h-4 text-theme-sage" /> こんな方へ
+                          <div className="bg-theme-base/60 p-3 rounded-xl border border-theme-sand/40">
+                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-2 text-xs uppercase tracking-wider">
+                               <CheckCircle2 className="w-3 h-3 text-theme-sage" /> こんな方へ
                             </h4>
-                            <ul className="space-y-2 md:space-y-3">
+                            <ul className="space-y-1.5">
                               {job.skills.map((skill, i) => (
-                                <li key={i} className="text-xs md:text-sm text-theme-gray flex items-start gap-3 leading-relaxed group/item">
-                                  <span className="w-1.5 h-1.5 bg-theme-sage rounded-full mt-2 flex-shrink-0 group-hover/item:bg-theme-sage transition-colors"></span>
+                                <li key={i} className="text-[10px] md:text-xs text-theme-gray flex items-start gap-2 leading-relaxed">
+                                  <span className="w-1 h-1 bg-theme-sage rounded-full mt-1.5 flex-shrink-0"></span>
                                   <span className="flex-1">{skill}</span>
                                 </li>
                               ))}
@@ -205,23 +202,23 @@ export const JobCards: React.FC = () => {
                         </div>
 
                         {/* Testimonial */}
-                        <div className="bg-theme-sand/30 p-4 lg:p-6 rounded-2xl relative mt-2">
-                          <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-theme-apricot absolute -top-3 -left-2 opacity-50" />
-                          <p className="text-xs md:text-sm text-theme-charcoal italic mb-2 leading-relaxed relative z-10">
+                        <div className="bg-theme-sand/30 p-3 rounded-xl relative mt-2">
+                          <MessageCircle className="w-4 h-4 text-theme-apricot absolute -top-2 -left-1 opacity-50" />
+                          <p className="text-[10px] md:text-xs text-theme-charcoal italic mb-1 leading-relaxed relative z-10">
                             "{job.testimonial.text}"
                           </p>
-                          <p className="text-[10px] md:text-xs text-theme-terracotta text-right font-bold tracking-wider">
+                          <p className="text-[10px] text-theme-terracotta text-right font-bold tracking-wider">
                             — {job.testimonial.author}
                           </p>
                         </div>
 
                         {/* Scroll Button */}
-                         <div className="pt-2">
+                         <div className="pt-1">
                           <button 
                             onClick={(e) => scrollToRecruitment(index, e)}
-                            className="flex w-full items-center justify-center gap-2 bg-white border border-theme-terracotta/30 text-theme-terracotta py-3 rounded-xl font-bold text-sm hover:bg-theme-terracotta hover:text-white transition-all duration-300 shadow-sm hover:shadow-glow"
+                            className="flex w-full items-center justify-center gap-2 bg-white border border-theme-terracotta/30 text-theme-terracotta py-2 rounded-lg font-bold text-xs hover:bg-theme-terracotta hover:text-white transition-all duration-300 shadow-sm"
                           >
-                             募集要項を見る <ArrowDown className="w-4 h-4" />
+                             募集要項を見る <ArrowDown className="w-3 h-3" />
                           </button>
                         </div>
                      </div>
@@ -230,12 +227,12 @@ export const JobCards: React.FC = () => {
 
                 <div className="flex justify-end mt-auto pt-4">
                    {expandedIndex === index ? (
-                     <div className="flex items-center gap-2 text-[10px] md:text-xs text-theme-terracotta font-bold tracking-widest hover:opacity-70 transition-opacity">
-                       閉じる <Minus className="w-4 h-4" />
+                     <div className="flex items-center gap-2 text-[10px] text-theme-terracotta font-bold tracking-widest hover:opacity-70 transition-opacity">
+                       閉じる <Minus className="w-3 h-3" />
                      </div>
                    ) : (
-                     <div className="flex items-center gap-2 text-[10px] md:text-xs text-theme-gray group-hover:text-theme-terracotta font-bold tracking-widest transition-colors">
-                       詳細を見る <Plus className="w-4 h-4" />
+                     <div className="flex items-center gap-2 text-[10px] text-theme-gray group-hover:text-theme-terracotta font-bold tracking-widest transition-colors">
+                       詳細を見る <Plus className="w-3 h-3" />
                      </div>
                    )}
                 </div>

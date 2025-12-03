@@ -16,8 +16,6 @@ export const OpeningOverlay: React.FC<OpeningOverlayProps> = ({ onComplete }) =>
     const handleBeforeUnload = () => window.scrollTo(0, 0);
     window.addEventListener('beforeunload', handleBeforeUnload);
 
-    // Initial lock is handled by App component now via isOpening prop,
-    // but we double check here to be safe.
     window.scrollTo(0, 0);
 
     // Animation Sequence
@@ -55,8 +53,8 @@ export const OpeningOverlay: React.FC<OpeningOverlayProps> = ({ onComplete }) =>
           
           <div className="relative w-full max-w-7xl px-8 md:px-12">
              
-             {/* 1. KINBUTSU REX (Slide Right to Left with Blur) */}
-             <div className="overflow-visible py-4">
+             {/* 1. 近物レックス株式会社 (Slide Right to Left with Blur) */}
+             <div className="overflow-visible py-4 text-right md:text-center">
                <h1 
                  className={`font-serif text-4xl md:text-6xl lg:text-7xl text-theme-charcoal font-bold tracking-wider whitespace-nowrap transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] transform ${
                    animationStep >= 1 
@@ -75,8 +73,8 @@ export const OpeningOverlay: React.FC<OpeningOverlayProps> = ({ onComplete }) =>
                 }`}
              ></div>
 
-             {/* 2. KONAN KOMAKI CENTER (Slide Right to Left with Blur, Delay) */}
-             <div className="overflow-visible py-2 flex justify-end">
+             {/* 2. コーナン小牧センター (Slide Right to Left with Blur, Delay) */}
+             <div className="overflow-visible py-2 flex justify-end md:justify-center">
                <p 
                  className={`font-serif text-3xl md:text-5xl lg:text-6xl text-theme-gray tracking-wide font-medium transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] delay-200 transform ${
                    animationStep >= 1 

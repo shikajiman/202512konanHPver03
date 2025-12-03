@@ -13,11 +13,11 @@ export const Scene: React.FC<SceneProps> = ({ id, children, className = "", onVi
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
           if (onVisible) onVisible(id);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -33,7 +33,15 @@ export const Scene: React.FC<SceneProps> = ({ id, children, className = "", onVi
     <section 
       id={id} 
       ref={sectionRef}
-      className={`min-h-screen md:h-screen w-full md:snap-start md:snap-always relative flex flex-col md:justify-center py-6 md:py-0 ${className}`}
+      // PC (md以上) では h-screen と snap-start を強制。
+      // Mobile では min-h-screen で中身に合わせて伸びる。
+      className={`
+        w-full relative flex flex-col
+        min-h-screen md:h-screen 
+        md:snap-start md:snap-always 
+        py-6 md:py-0
+        ${className}
+      `}
     >
       {children}
     </section>
