@@ -13,11 +13,11 @@ export const Scene: React.FC<SceneProps> = ({ id, children, className = "", onVi
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
           if (onVisible) onVisible(id);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -33,7 +33,7 @@ export const Scene: React.FC<SceneProps> = ({ id, children, className = "", onVi
     <section 
       id={id} 
       ref={sectionRef}
-      className={`h-screen w-full snap-start snap-always relative overflow-hidden flex flex-col justify-center ${className}`}
+      className={`min-h-screen md:h-screen w-full md:snap-start md:snap-always relative flex flex-col md:justify-center py-16 md:py-0 ${className}`}
     >
       {children}
     </section>

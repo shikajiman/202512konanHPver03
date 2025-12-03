@@ -33,7 +33,7 @@ export const CtaSection: React.FC = () => {
             </a>
             
             <p className="mt-8 text-xs text-white/50 tracking-widest uppercase">
-              Kinbutsu Rex Co., Ltd. Konan Komaki Center
+              近物レックス株式会社 コーナン小牧センター
             </p>
         </div>
     </div>

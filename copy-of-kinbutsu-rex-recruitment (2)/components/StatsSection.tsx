@@ -40,9 +40,9 @@ export const StatsSection: React.FC = () => {
             
             <div className="flex justify-between items-start mb-8 relative z-10">
               <h3 className="text-xl font-serif text-theme-charcoal">
-                男女比
+                男女比率
               </h3>
-              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">GENDER</span>
+              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">男女比</span>
             </div>
 
             <div className="h-[240px] w-full relative">
@@ -96,9 +96,9 @@ export const StatsSection: React.FC = () => {
 
             <div className="flex justify-between items-start mb-8 relative z-10">
               <h3 className="text-xl font-serif text-theme-charcoal">
-                年齢層
+                年齢構成
               </h3>
-              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">AGE</span>
+              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">年齢層</span>
             </div>
             
             <div className="h-[240px] w-full">

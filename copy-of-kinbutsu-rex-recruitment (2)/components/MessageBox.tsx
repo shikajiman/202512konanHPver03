@@ -70,7 +70,7 @@ export const MessageBox: React.FC = () => {
             <div className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[2rem] shadow-card border border-white/50">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 bg-theme-sage rounded-full animate-pulse"></div>
-                <span className="text-xs font-bold text-theme-sage tracking-widest uppercase">Safe & Clean</span>
+                <span className="text-xs font-bold text-theme-sage tracking-widest">安心・清潔</span>
               </div>
               <p className="font-serif text-theme-charcoal">
                 冷暖房完備の<br/>休憩室あり

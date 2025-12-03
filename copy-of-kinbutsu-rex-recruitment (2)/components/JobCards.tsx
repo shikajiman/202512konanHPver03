@@ -17,7 +17,7 @@ interface ExtendedJobType extends JobType {
 const jobs: ExtendedJobType[] = [
   {
     title: "女性作業員（検品・仕分・開梱）",
-    engTitle: "Inspection",
+    engTitle: "検品業務",
     description: "ホームセンターの日用品を仕分ける簡単ワーク！バーコードをスキャンして棚に入れるだけ。",
     details: `入荷した商品を、各店舗に仕分けするお仕事です。専門知識や経験は一切不要。
 以下の3つのステップを分担して繰り返すシンプルな作業です。
@@ -44,7 +44,7 @@ const jobs: ExtendedJobType[] = [
   },
   {
     title: "男性構内作業員（ピッキング・仕分け・カゴ積み）",
-    engTitle: "Case Sorting",
+    engTitle: "ケース仕分け",
     description: "店舗ごとに商品をケース単位で仕分けます。適度に体を動かして、リズムよく働けるお仕事です。",
     details: "商品の入ったダンボール（ケース）を、配送先の店舗ごとに仕分ける作業がメインです。リストを見ながら正確に、そしてスピーディーに。特別なスキルは不要で、未経験からでもすぐに活躍できます。",
     tasks: [
@@ -66,7 +66,7 @@ const jobs: ExtendedJobType[] = [
   },
   {
     title: "事務員（伝票整理・電話応対・入力）",
-    engTitle: "Office Work",
+    engTitle: "一般事務",
     description: "データ入力や電話対応など、物流センターをバックオフィスから支える大切なお仕事です。",
     details: "物流センターの「司令塔」として、現場がスムーズに動けるようにサポートします。ドライバーさんの受付対応や、専用システムへのデータ入力など、事務作業全般をお任せします。現場と連携を取ることも多い、やりがいのあるポジションです。",
     tasks: [
@@ -104,8 +104,8 @@ export const JobCards: React.FC = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-start overflow-y-auto no-scrollbar w-full">
-      <div className="text-center mb-8 lg:mb-12 shrink-0">
+    <div className="h-full flex flex-col justify-start w-full">
+      <div className="text-center mb-6 lg:mb-12 shrink-0 px-6">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-serif text-theme-charcoal mb-4">
             仕事内容
@@ -117,123 +117,140 @@ export const JobCards: React.FC = () => {
         </ScrollReveal>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 perspective-[1000px] w-full pb-20">
+      {/* Mobile: Horizontal Scroll / Desktop: Grid */}
+      <div className="
+        flex md:grid md:grid-cols-3 gap-6 lg:gap-8 
+        overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar 
+        px-6 pb-12 w-full md:w-auto
+      ">
         {jobs.map((job, index) => (
-          <ScrollReveal key={index} delay={index * 150}>
-            <div 
-              onClick={() => toggleExpand(index)}
-              className={`
-                group relative bg-white rounded-[2rem] p-6 lg:p-8 cursor-pointer flex flex-col
-                transition-all duration-500 ease-out border border-transparent
-                ${expandedIndex === index 
-                  ? 'shadow-[0_25px_50px_-12px_rgba(74,66,56,0.15)] border-theme-terracotta/20 scale-[1.02] z-10' 
-                  : 'shadow-soft hover:shadow-[0_25px_50px_-12px_rgba(74,66,56,0.15)] hover:scale-[1.02] hover:-translate-y-1'}
-              `}
-            >
-              <div className="flex justify-between items-start mb-4 lg:mb-6">
-                <div className={`
-                  p-4 lg:p-5 rounded-2xl transition-all duration-500
-                  ${expandedIndex === index ? 'bg-theme-terracotta text-white shadow-glow' : 'bg-theme-sand text-theme-charcoal group-hover:bg-theme-apricot group-hover:scale-110'}
-                `}>
-                  {job.icon}
-                </div>
-                <span className="font-serif text-4xl lg:text-5xl text-theme-sand font-bold opacity-30 group-hover:opacity-60 transition-opacity">
-                  0{index + 1}
-                </span>
-              </div>
-
-              <h3 className="text-lg lg:text-xl font-bold mb-1 text-theme-charcoal group-hover:text-theme-terracotta transition-colors">
-                {job.title}
-              </h3>
-              <p className="text-xs font-serif text-theme-terracotta tracking-widest uppercase mb-3 opacity-70">
-                {job.engTitle}
-              </p>
-              
-              <p className="text-theme-gray leading-relaxed text-sm mb-4 lg:mb-6 line-clamp-2 group-hover:line-clamp-none transition-all">
-                {job.description}
-              </p>
-              
+          <div key={index} className="min-w-[85vw] md:min-w-0 snap-center">
+            <ScrollReveal delay={index * 150}>
               <div 
-                className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                onClick={() => toggleExpand(index)}
+                className={`
+                  group relative bg-white rounded-[2rem] p-6 lg:p-8 cursor-pointer flex flex-col h-full
+                  transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] border border-transparent
+                  ${expandedIndex === index 
+                    ? 'shadow-2xl scale-[1.02] border-theme-terracotta/20 z-10' 
+                    : 'shadow-soft hover:shadow-card hover:scale-[1.02] hover:-translate-y-1'}
+                `}
               >
-                <div className="overflow-hidden">
-                   <div className="pt-4 mt-2 border-t border-theme-sand/50 space-y-6">
-                      
-                      {/* Job Details */}
-                      <div>
-                        <p className="text-sm text-theme-charcoal leading-loose whitespace-pre-wrap">
-                          {job.details}
-                        </p>
-                      </div>
+                <div className="flex justify-between items-start mb-4 lg:mb-6">
+                  <div className={`
+                    p-4 lg:p-5 rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                    ${expandedIndex === index ? 'bg-theme-terracotta text-white shadow-glow rotate-6 scale-110' : 'bg-theme-sand text-theme-charcoal group-hover:bg-theme-apricot group-hover:-rotate-6 group-hover:scale-110'}
+                  `}>
+                    {job.icon}
+                  </div>
+                  <span className="font-serif text-4xl lg:text-5xl text-theme-sand font-bold opacity-30 group-hover:opacity-60 transition-opacity">
+                    0{index + 1}
+                  </span>
+                </div>
 
-                      {/* Tasks */}
-                      <div>
-                        <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-2 text-sm">
-                           <Clock className="w-4 h-4 text-theme-terracotta" /> 主な業務
-                        </h4>
-                        <ul className="space-y-2">
-                          {job.tasks.map((task, i) => (
-                            <li key={i} className="text-sm text-theme-gray flex items-start gap-2">
-                              <span className="w-1.5 h-1.5 bg-theme-sand rounded-full mt-1.5 flex-shrink-0"></span>
-                              {task}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      {/* Skills */}
-                      <div>
-                        <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-2 text-sm">
-                           <CheckCircle2 className="w-4 h-4 text-theme-terracotta" /> こんな方へ
-                        </h4>
-                        <ul className="space-y-2">
-                          {job.skills.map((skill, i) => (
-                            <li key={i} className="text-sm text-theme-gray flex items-start gap-2">
-                              <span className="w-1.5 h-1.5 bg-theme-sage rounded-full mt-1.5 flex-shrink-0"></span>
-                              {skill}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                <h3 className="text-lg lg:text-xl font-bold mb-1 text-theme-charcoal group-hover:text-theme-terracotta transition-colors">
+                  {job.title}
+                </h3>
+                <p className="text-xs font-serif text-theme-terracotta tracking-widest mb-3 opacity-70">
+                  {job.engTitle}
+                </p>
+                
+                <p className="text-theme-gray leading-relaxed text-sm mb-4 lg:mb-6 line-clamp-2 group-hover:line-clamp-none transition-all">
+                  {job.description}
+                </p>
+                
+                <div 
+                  className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                >
+                  <div className="overflow-hidden">
+                     <div className="pt-4 mt-2 border-t border-theme-sand/50 space-y-6">
+                        
+                        {/* Job Details */}
+                        <div className="mb-4">
+                          <p className="text-sm text-theme-charcoal leading-loose whitespace-pre-wrap">
+                            {job.details}
+                          </p>
+                        </div>
 
-                      {/* Testimonial */}
-                      <div className="bg-theme-sand/30 p-4 lg:p-6 rounded-2xl relative mt-2">
-                        <MessageCircle className="w-6 h-6 text-theme-apricot absolute -top-3 -left-2 opacity-50" />
-                        <p className="text-sm text-theme-charcoal italic mb-2 leading-relaxed relative z-10">
-                          "{job.testimonial.text}"
-                        </p>
-                        <p className="text-xs text-theme-terracotta text-right font-bold tracking-wider">
-                          — {job.testimonial.author}
-                        </p>
-                      </div>
+                        {/* Tasks & Skills Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                          {/* Tasks */}
+                          <div className="bg-theme-base/60 p-5 rounded-xl border border-theme-sand/40 hover:border-theme-terracotta/20 transition-colors">
+                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-4 text-sm uppercase tracking-wider">
+                               <Clock className="w-4 h-4 text-theme-terracotta" /> 主な業務
+                            </h4>
+                            <ul className="space-y-3">
+                              {job.tasks.map((task, i) => (
+                                <li key={i} className="text-sm text-theme-gray flex items-start gap-3 leading-relaxed group/item">
+                                  <span className="w-1.5 h-1.5 bg-theme-sand rounded-full mt-2 flex-shrink-0 group-hover/item:bg-theme-terracotta transition-colors"></span>
+                                  <span className="flex-1">{task}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          {/* Skills */}
+                          <div className="bg-theme-base/60 p-5 rounded-xl border border-theme-sand/40 hover:border-theme-sage/20 transition-colors">
+                            <h4 className="flex items-center gap-2 font-bold text-theme-charcoal mb-4 text-sm uppercase tracking-wider">
+                               <CheckCircle2 className="w-4 h-4 text-theme-sage" /> こんな方へ
+                            </h4>
+                            <ul className="space-y-3">
+                              {job.skills.map((skill, i) => (
+                                <li key={i} className="text-sm text-theme-gray flex items-start gap-3 leading-relaxed group/item">
+                                  <span className="w-1.5 h-1.5 bg-theme-sage rounded-full mt-2 flex-shrink-0 group-hover/item:bg-theme-sage transition-colors"></span>
+                                  <span className="flex-1">{skill}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
 
-                      {/* Scroll Button */}
-                       <div className="pt-2">
-                        <button 
-                          onClick={(e) => scrollToRecruitment(index, e)}
-                          className="flex w-full items-center justify-center gap-2 bg-white border border-theme-terracotta/30 text-theme-terracotta py-3 rounded-xl font-bold text-sm hover:bg-theme-terracotta hover:text-white transition-all duration-300 shadow-sm hover:shadow-glow"
-                        >
-                           募集要項を見る <ArrowDown className="w-4 h-4" />
-                        </button>
-                      </div>
-                   </div>
+                        {/* Testimonial */}
+                        <div className="bg-theme-sand/30 p-4 lg:p-6 rounded-2xl relative mt-2">
+                          <MessageCircle className="w-6 h-6 text-theme-apricot absolute -top-3 -left-2 opacity-50" />
+                          <p className="text-sm text-theme-charcoal italic mb-2 leading-relaxed relative z-10">
+                            "{job.testimonial.text}"
+                          </p>
+                          <p className="text-xs text-theme-terracotta text-right font-bold tracking-wider">
+                            — {job.testimonial.author}
+                          </p>
+                        </div>
+
+                        {/* Scroll Button */}
+                         <div className="pt-2">
+                          <button 
+                            onClick={(e) => scrollToRecruitment(index, e)}
+                            className="flex w-full items-center justify-center gap-2 bg-white border border-theme-terracotta/30 text-theme-terracotta py-3 rounded-xl font-bold text-sm hover:bg-theme-terracotta hover:text-white transition-all duration-300 shadow-sm hover:shadow-glow"
+                          >
+                             募集要項を見る <ArrowDown className="w-4 h-4" />
+                          </button>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-end mt-auto pt-4">
+                   {expandedIndex === index ? (
+                     <div className="flex items-center gap-2 text-xs text-theme-terracotta font-bold tracking-widest hover:opacity-70 transition-opacity">
+                       閉じる <Minus className="w-4 h-4" />
+                     </div>
+                   ) : (
+                     <div className="flex items-center gap-2 text-xs text-theme-gray group-hover:text-theme-terracotta font-bold tracking-widest transition-colors">
+                       詳細を見る <Plus className="w-4 h-4" />
+                     </div>
+                   )}
                 </div>
               </div>
-
-              <div className="flex justify-end mt-auto pt-4">
-                 {expandedIndex === index ? (
-                   <div className="flex items-center gap-2 text-xs text-theme-terracotta font-bold tracking-widest hover:opacity-70 transition-opacity">
-                     閉じる <Minus className="w-4 h-4" />
-                   </div>
-                 ) : (
-                   <div className="flex items-center gap-2 text-xs text-theme-gray group-hover:text-theme-terracotta font-bold tracking-widest transition-colors">
-                     詳細を見る <Plus className="w-4 h-4" />
-                   </div>
-                 )}
-              </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         ))}
+      </div>
+      
+      {/* Mobile Swipe Indicator */}
+      <div className="md:hidden flex justify-center gap-1 pb-8 opacity-50">
+        <div className="w-1.5 h-1.5 rounded-full bg-theme-charcoal"></div>
+        <div className="w-1.5 h-1.5 rounded-full bg-theme-sand"></div>
+        <div className="w-1.5 h-1.5 rounded-full bg-theme-sand"></div>
       </div>
     </div>
   );

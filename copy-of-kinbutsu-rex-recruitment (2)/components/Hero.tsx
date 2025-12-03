@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
           <div className="animate-fade-up" style={{ animationDelay: '2.5s' }}>
             <div className="flex items-center gap-4 mb-6">
               <span className="h-[1px] w-12 bg-theme-terracotta"></span>
-              <span className="text-theme-terracotta text-sm tracking-[0.2em] font-serif font-bold uppercase">
+              <span className="text-theme-terracotta text-sm tracking-[0.2em] font-serif font-bold">
                 採用情報
               </span>
             </div>
@@ -70,7 +70,7 @@ export const Hero: React.FC = () => {
             </p>
 
             <div className="hidden lg:flex items-center gap-3 text-theme-gray/50 opacity-0 animate-fade-up" style={{ animationDelay: '3.6s' }}>
-              <span className="text-xs tracking-widest uppercase">スクロールして見る</span>
+              <span className="text-xs tracking-widest">スクロールして見る</span>
               <div className="animate-bounce duration-[2000ms]">
                 <ArrowDown className="w-4 h-4" />
               </div>
@@ -140,13 +140,13 @@ export const Hero: React.FC = () => {
           {/* Floating Card */}
           <div className="absolute bottom-4 left-0 lg:bottom-12 lg:-left-8 bg-white/90 backdrop-blur-xl p-6 lg:p-8 rounded-tr-[30px] rounded-bl-[30px] shadow-card border border-white/50 max-w-[220px] lg:max-w-[260px] z-20 opacity-0 animate-fade-up" style={{ animationDelay: '3s' }}>
              <p className="font-serif text-lg lg:text-xl text-theme-charcoal mb-1">小牧センター</p>
-             <p className="text-[10px] text-theme-gray mb-3 tracking-widest font-bold opacity-60">KOMAKI CENTER</p>
+             <p className="text-[10px] text-theme-gray mb-3 tracking-widest font-bold opacity-60">募集中</p>
              <div className="flex items-center gap-2">
                <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-theme-terracotta opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-theme-terracotta"></span>
                 </span>
-               <span className="text-xs text-theme-charcoal font-bold tracking-wider">現在、募集中</span>
+               <span className="text-xs text-theme-charcoal font-bold tracking-wider">受付中</span>
              </div>
           </div>
         </div>

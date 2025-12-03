@@ -117,9 +117,9 @@ const conditions = [
 
 export const JobConditions: React.FC = () => {
   return (
-    <div className="w-full h-full flex flex-col overflow-y-auto no-scrollbar">
+    <div className="w-full h-full flex flex-col justify-start w-full">
       <div className="bg-white rounded-[3rem] p-6 md:p-16 shadow-soft shrink-0">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-theme-charcoal mb-4">
             募集要項
           </h2>
@@ -128,17 +128,22 @@ export const JobConditions: React.FC = () => {
           </p>
         </div>
 
-        <div className="space-y-12">
+        {/* Mobile: Horizontal Scroll / Desktop: Stack */}
+        <div className="
+          flex md:flex-col gap-6 md:gap-12 
+          overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar 
+          pb-8 md:pb-0 w-full
+        ">
           {conditions.map((item, index) => (
             <div 
               key={index} 
               id={`recruitment-${index}`} 
-              className="group relative overflow-hidden rounded-3xl border border-theme-sand/50 hover:shadow-lg transition-all duration-500 bg-theme-base"
+              className="group relative overflow-hidden rounded-3xl border border-theme-sand/50 hover:shadow-lg transition-all duration-500 bg-theme-base min-w-[90vw] md:min-w-0 snap-center shrink-0"
             >
               <div className="grid md:grid-cols-12 gap-0">
                 
                 {/* Image Section */}
-                <div className="md:col-span-4 relative h-64 md:h-full min-h-[300px] overflow-hidden">
+                <div className="md:col-span-4 relative h-48 md:h-full min-h-[200px] md:min-h-[300px] overflow-hidden">
                    <img 
                      src={item.image} 
                      alt={item.title}
@@ -154,9 +159,9 @@ export const JobConditions: React.FC = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="md:col-span-8 p-8 md:p-10 flex flex-col justify-center">
+                <div className="md:col-span-8 p-6 md:p-10 flex flex-col justify-center">
                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-6 border-b border-theme-sand pb-4">
-                      <h3 className="text-xl md:text-2xl font-serif text-theme-charcoal">
+                      <h3 className="text-lg md:text-2xl font-serif text-theme-charcoal">
                         {item.title}
                       </h3>
                       <span className="text-xs text-theme-terracotta tracking-[0.2em] font-bold">
@@ -213,7 +218,7 @@ export const JobConditions: React.FC = () => {
                        href={GOOGLE_FORM_URL}
                        target="_blank"
                        rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 bg-theme-charcoal text-white py-3 px-8 rounded-full font-bold text-sm hover:bg-theme-terracotta transition-colors shadow-md group/btn"
+                       className="inline-flex items-center gap-2 bg-theme-charcoal text-white py-3 px-8 rounded-full font-bold text-sm hover:bg-theme-terracotta transition-colors shadow-md group/btn w-full md:w-auto justify-center"
                      >
                        この職種に応募する <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                      </a>
@@ -223,7 +228,13 @@ export const JobConditions: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="h-24"></div> {/* Bottom spacer */}
+        
+        {/* Mobile Swipe Indicator */}
+        <div className="md:hidden flex justify-center gap-1 mt-4 opacity-50 pb-8">
+          <div className="w-1.5 h-1.5 rounded-full bg-theme-charcoal"></div>
+          <div className="w-1.5 h-1.5 rounded-full bg-theme-sand"></div>
+          <div className="w-1.5 h-1.5 rounded-full bg-theme-sand"></div>
+        </div>
       </div>
     </div>
   );
