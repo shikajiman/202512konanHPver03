@@ -20,14 +20,14 @@ export const StatsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-theme-sand pb-8">
           <div>
              <h2 className="text-3xl md:text-5xl font-serif text-theme-charcoal mb-4">
-               Data & Statistics
+               数字で見る職場
              </h2>
              <p className="text-theme-gray">
                数字で見る、小牧センターの働きやすさ。
              </p>
           </div>
           <div className="mt-4 md:mt-0 text-right">
-             <p className="font-serif text-theme-terracotta text-lg tracking-widest">REAL VOICE</p>
+             <p className="font-serif text-theme-terracotta text-lg tracking-widest">リアルな声</p>
           </div>
         </div>
       </ScrollReveal>
@@ -42,7 +42,7 @@ export const StatsSection: React.FC = () => {
               <h3 className="text-xl font-serif text-theme-charcoal">
                 男女比率
               </h3>
-              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">GENDER</span>
+              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">男女比</span>
             </div>
 
             <div className="h-[240px] w-full relative">
@@ -96,9 +96,9 @@ export const StatsSection: React.FC = () => {
 
             <div className="flex justify-between items-start mb-8 relative z-10">
               <h3 className="text-xl font-serif text-theme-charcoal">
-                年齢層バランス
+                年齢構成
               </h3>
-              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">AGE</span>
+              <span className="text-xs text-theme-gray border border-theme-sand px-3 py-1 rounded-full">年齢層</span>
             </div>
             
             <div className="h-[240px] w-full">

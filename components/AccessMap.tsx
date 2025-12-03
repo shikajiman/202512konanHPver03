@@ -3,10 +3,10 @@ import { MapPin, Car, Train } from 'lucide-react';
 
 export const AccessMap: React.FC = () => {
   return (
-    <section className="py-20 container mx-auto px-6 max-w-6xl">
+    <section className="py-8 container mx-auto px-6 max-w-6xl">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-serif text-theme-charcoal mb-4">
-          Access
+          アクセス
         </h2>
         <p className="text-theme-gray text-sm tracking-widest uppercase">
           勤務地・アクセス

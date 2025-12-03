@@ -5,7 +5,7 @@ import { GOOGLE_FORM_URL } from '../constants';
 const conditions = [
   {
     title: "女性作業員（検品・仕分・開梱）",
-    engTitle: "WOMEN'S STAFF",
+    engTitle: "女性スタッフ活躍中",
     image: "https://lh3.googleusercontent.com/d/15i5ONIHLGCLsD-LLM6w_5KJgjcmnnNf4", 
     wage: "時給 1,140円",
     time: (
@@ -46,7 +46,7 @@ const conditions = [
   },
   {
     title: "男性構内作業員（ピッキング・仕分け・カゴ積み）",
-    engTitle: "MEN'S STAFF",
+    engTitle: "男性スタッフ活躍中",
     image: "https://lh3.googleusercontent.com/d/1jHQWrFYucv_uJbMMxx30hxSkrKk84F91", 
     wage: "時給 1,200円",
     time: (
@@ -80,7 +80,7 @@ const conditions = [
   },
   {
     title: "事務員（伝票整理・電話応対・入力）",
-    engTitle: "OFFICE WORK",
+    engTitle: "事務スタッフ",
     image: "https://lh3.googleusercontent.com/d/1JQ2dhlaQrtjiyHIVzzSOoL2lfvCzFnNS",
     imageClass: "object-contain bg-theme-sand/20", 
     wage: "時給 1,140円",
@@ -117,113 +117,113 @@ const conditions = [
 
 export const JobConditions: React.FC = () => {
   return (
-    <div className="w-full h-full flex flex-col overflow-y-auto no-scrollbar">
-      <div className="bg-white rounded-[3rem] p-6 md:p-16 shadow-soft shrink-0">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif text-theme-charcoal mb-4">
-            Recruitment Guide
-          </h2>
-          <p className="text-theme-gray text-sm tracking-widest uppercase">
-            募集要項・待遇について
-          </p>
-        </div>
+    <div className="w-full flex flex-col justify-start">
+      <div className="text-center mb-6 md:mb-8 shrink-0">
+        <h2 className="text-2xl md:text-4xl font-serif text-theme-charcoal mb-2 md:mb-4">
+          募集要項
+        </h2>
+        <p className="text-theme-gray text-xs md:text-sm tracking-widest uppercase">
+          Recruitment Guide
+        </p>
+      </div>
 
-        <div className="space-y-12">
-          {conditions.map((item, index) => (
-            <div 
-              key={index} 
-              id={`recruitment-${index}`} 
-              className="group relative overflow-hidden rounded-3xl border border-theme-sand/50 hover:shadow-lg transition-all duration-500 bg-theme-base"
-            >
-              <div className="grid md:grid-cols-12 gap-0">
-                
-                {/* Image Section */}
-                <div className="md:col-span-4 relative h-64 md:h-full min-h-[300px] overflow-hidden">
-                   <img 
-                     src={item.image} 
-                     alt={item.title}
-                     loading="lazy"
-                     decoding="async"
-                     referrerPolicy="no-referrer"
-                     className={`absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105 ${item.imageClass || "object-cover"}`}
-                   />
-                   <div className="absolute inset-0 bg-theme-charcoal/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
-                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-xs font-serif tracking-widest text-theme-charcoal z-10">
-                      0{index + 1}
-                   </div>
-                </div>
+      {/* Grid Layout on PC for better visibility, Vertical on Mobile */}
+      <div className="
+        flex flex-col gap-8 md:gap-8
+        pb-12 w-full
+      ">
+        {conditions.map((item, index) => (
+          <div 
+            key={index} 
+            id={`recruitment-${index}`} 
+            className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-theme-sand/50 hover:shadow-lg transition-all duration-500 bg-white w-full shrink-0"
+          >
+            <div className="grid md:grid-cols-12 gap-0">
+              
+              {/* Image Section */}
+              <div className="md:col-span-3 relative h-40 md:h-full min-h-[160px] md:min-h-[240px] overflow-hidden bg-theme-sand/10">
+                 <img 
+                   src={item.image} 
+                   alt={item.title}
+                   loading="lazy"
+                   decoding="async"
+                   referrerPolicy="no-referrer"
+                   className={`absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105 ${item.imageClass || "object-cover"}`}
+                 />
+                 <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-white/90 backdrop-blur-md px-3 py-0.5 md:px-4 md:py-1 rounded-full text-[10px] md:text-xs font-serif tracking-widest text-theme-charcoal z-10">
+                    0{index + 1}
+                 </div>
+              </div>
 
-                {/* Content Section */}
-                <div className="md:col-span-8 p-8 md:p-10 flex flex-col justify-center">
-                   <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-6 border-b border-theme-sand pb-4">
-                      <h3 className="text-xl md:text-2xl font-serif text-theme-charcoal">
-                        {item.title}
-                      </h3>
-                      <span className="text-xs text-theme-terracotta tracking-[0.2em] font-bold">
-                        {item.engTitle}
-                      </span>
-                   </div>
+              {/* Content Section */}
+              <div className="md:col-span-9 p-5 md:p-8 flex flex-col justify-center">
+                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-4 border-b border-theme-sand pb-3">
+                    <h3 className="text-base md:text-xl font-serif text-theme-charcoal font-bold">
+                      {item.title}
+                    </h3>
+                    <span className="text-[10px] md:text-xs text-theme-terracotta tracking-[0.2em] font-bold">
+                      {item.engTitle}
+                    </span>
+                 </div>
 
-                   <div className="grid sm:grid-cols-2 gap-y-6 gap-x-8">
-                      <div className="flex flex-col gap-2">
-                         <span className="flex items-center gap-2 text-xs text-theme-gray font-bold tracking-wider">
-                           <Banknote className="w-4 h-4 text-theme-terracotta" /> 給与
-                         </span>
-                         <p className="text-lg text-theme-charcoal font-medium pl-6">
-                           {item.wage}
-                         </p>
-                      </div>
+                 <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8">
+                    <div className="flex flex-col gap-1">
+                       <span className="flex items-center gap-2 text-[10px] md:text-xs text-theme-gray font-bold tracking-wider">
+                         <Banknote className="w-3.5 h-3.5 text-theme-terracotta" /> 給与
+                       </span>
+                       <p className="text-sm md:text-base text-theme-charcoal font-medium pl-6">
+                         {item.wage}
+                       </p>
+                    </div>
 
-                      <div className="flex flex-col gap-2">
-                         <span className="flex items-center gap-2 text-xs text-theme-gray font-bold tracking-wider">
-                           <Clock className="w-4 h-4 text-theme-terracotta" /> 勤務時間
-                         </span>
-                         <div className="text-base text-theme-charcoal pl-6">
-                           {item.time}
-                         </div>
-                      </div>
+                    <div className="flex flex-col gap-1">
+                       <span className="flex items-center gap-2 text-[10px] md:text-xs text-theme-gray font-bold tracking-wider">
+                         <Clock className="w-3.5 h-3.5 text-theme-terracotta" /> 勤務時間
+                       </span>
+                       <div className="text-xs md:text-sm text-theme-charcoal pl-6">
+                         {item.time}
+                       </div>
+                    </div>
 
-                      <div className="flex flex-col gap-2">
-                         <span className="flex items-center gap-2 text-xs text-theme-gray font-bold tracking-wider">
-                           <Calendar className="w-4 h-4 text-theme-terracotta" /> 休日・休暇
-                         </span>
-                         <p className="text-base text-theme-charcoal pl-6">
-                           {item.days}
-                         </p>
-                      </div>
+                    <div className="flex flex-col gap-1">
+                       <span className="flex items-center gap-2 text-[10px] md:text-xs text-theme-gray font-bold tracking-wider">
+                         <Calendar className="w-3.5 h-3.5 text-theme-terracotta" /> 休日・休暇
+                       </span>
+                       <p className="text-xs md:text-sm text-theme-charcoal pl-6">
+                         {item.days}
+                       </p>
+                    </div>
 
-                      <div className="flex flex-col gap-2">
-                         <span className="flex items-center gap-2 text-xs text-theme-gray font-bold tracking-wider">
-                           <Sparkles className="w-4 h-4 text-theme-terracotta" /> 待遇・福利厚生
-                         </span>
-                         <ul className="pl-6 text-sm text-theme-charcoal space-y-1">
-                            {item.benefits.map((benefit, i) => (
-                              <li key={i} className="flex items-center gap-2">
-                                <span className="w-1 h-1 bg-theme-sage rounded-full"></span>
-                                {benefit}
-                              </li>
-                            ))}
-                         </ul>
-                      </div>
-                   </div>
+                    <div className="flex flex-col gap-1">
+                       <span className="flex items-center gap-2 text-[10px] md:text-xs text-theme-gray font-bold tracking-wider">
+                         <Sparkles className="w-3.5 h-3.5 text-theme-terracotta" /> 待遇・福利厚生
+                       </span>
+                       <ul className="pl-6 text-[10px] md:text-xs text-theme-charcoal space-y-0.5">
+                          {item.benefits.map((benefit, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              <span className="w-1 h-1 bg-theme-sage rounded-full"></span>
+                              {benefit}
+                            </li>
+                          ))}
+                       </ul>
+                    </div>
+                 </div>
 
-                   {/* Apply Button */}
-                   <div className="mt-8 pt-6 border-t border-theme-sand/50">
-                     <a 
-                       href={GOOGLE_FORM_URL}
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       className="inline-flex items-center gap-2 bg-theme-charcoal text-white py-3 px-8 rounded-full font-bold text-sm hover:bg-theme-terracotta transition-colors shadow-md group/btn"
-                     >
-                       この職種に応募する <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                     </a>
-                   </div>
-                </div>
+                 {/* Apply Button */}
+                 <div className="mt-6 pt-4 border-t border-theme-sand/50">
+                   <a 
+                     href={GOOGLE_FORM_URL}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="inline-flex items-center gap-2 bg-theme-charcoal text-white py-2.5 px-6 rounded-full font-bold text-xs hover:bg-theme-terracotta transition-colors shadow-md group/btn w-full md:w-auto justify-center"
+                   >
+                     この職種に応募する <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                   </a>
+                 </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div className="h-24"></div> {/* Bottom spacer */}
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { GOOGLE_FORM_URL } from '../constants';
@@ -29,12 +28,12 @@ export const CtaSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-4 bg-white text-theme-terracotta py-4 px-12 rounded-full font-serif text-lg tracking-widest hover:bg-theme-sand transition-all duration-300 hover:scale-105 hover:shadow-lg group"
             >
-                <span>APPLY NOW</span>
+                <span>今すぐ応募する</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
             <p className="mt-8 text-xs text-white/50 tracking-widest uppercase">
-              Kinbutsu Rex Co., Ltd. Konan Komaki Center
+              近物レックス株式会社 コーナン小牧センター
             </p>
         </div>
     </div>
