@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -31,8 +31,8 @@ export const Header: React.FC = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? 'bg-theme-base/90 backdrop-blur-xl py-4 shadow-sm border-b border-theme-sand/50' 
-          : 'bg-transparent py-6 md:py-8'
+          ? 'bg-theme-base/90 backdrop-blur-xl py-3 md:py-4 shadow-sm border-b border-theme-sand/50' 
+          : 'bg-transparent py-4 md:py-8'
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -79,12 +79,12 @@ export const Header: React.FC = () => {
              </span>
           </a>
           
-          {/* Apply Button (Desktop Only - Mobile has it in bottom nav) */}
+          {/* Apply Button (Visible on Mobile now) */}
           <a 
             href={GOOGLE_FORM_URL}
             target="_blank" 
             rel="noopener noreferrer"
-            className="hidden md:flex bg-theme-charcoal text-theme-base text-xs font-serif tracking-widest px-6 py-2.5 rounded-full shadow-lg hover:bg-theme-terracotta transition-colors duration-300"
+            className="bg-theme-charcoal text-theme-base text-xs font-serif tracking-widest px-4 py-2 md:px-6 md:py-2.5 rounded-full shadow-lg hover:bg-theme-terracotta transition-colors duration-300"
           >
             採用情報
           </a>

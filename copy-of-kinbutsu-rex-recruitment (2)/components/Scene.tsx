@@ -33,7 +33,7 @@ export const Scene: React.FC<SceneProps> = ({ id, children, className = "", onVi
     <section 
       id={id} 
       ref={sectionRef}
-      className={`min-h-screen md:h-screen w-full md:snap-start md:snap-always relative flex flex-col md:justify-center py-16 md:py-0 ${className}`}
+      className={`min-h-screen md:h-screen w-full md:snap-start md:snap-always relative flex flex-col md:justify-center py-6 md:py-0 ${className}`}
     >
       {children}
     </section>

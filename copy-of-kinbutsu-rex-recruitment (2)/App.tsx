@@ -10,7 +10,6 @@ import { Footer } from './components/Footer';
 import { AccessMap } from './components/AccessMap';
 import { OpeningOverlay } from './components/OpeningOverlay';
 import { Scene } from './components/Scene';
-import { MobileNav } from './components/MobileNav';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -77,17 +76,17 @@ const App: React.FC = () => {
       {/* Main Container: No Snap on Mobile, Snap on Desktop */}
       <main 
         ref={mainRef}
-        className={`h-full w-full md:snap-y md:snap-mandatory no-scrollbar pb-24 md:pb-0 ${isOpening ? 'overflow-hidden' : 'overflow-y-scroll'}`}
+        className={`h-full w-full md:snap-y md:snap-mandatory no-scrollbar ${isOpening ? 'overflow-hidden' : 'overflow-y-scroll'}`}
       >
         
         {/* Scene 1: Hero */}
-        <Scene id="hero" onVisible={handleSceneVisible}>
+        <Scene id="hero" onVisible={handleSceneVisible} className="pt-0 md:pt-0">
           <Hero />
         </Scene>
         
         {/* Scene 2: About (Message Box) */}
         <Scene id="about" onVisible={handleSceneVisible} className="bg-gradient-to-b from-transparent to-theme-sand/20">
-          <div className="container mx-auto px-6 max-w-7xl h-full flex items-center justify-center">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl h-full flex items-center justify-center">
              <div className="w-full">
                <MessageBox />
              </div>
@@ -96,21 +95,21 @@ const App: React.FC = () => {
 
         {/* Scene 3: Work Style (Job Cards) */}
         <Scene id="work-style" onVisible={handleSceneVisible} className="bg-theme-sand/10">
-           <div className="container mx-auto px-6 max-w-7xl h-full flex flex-col justify-start md:justify-center pt-24 md:pt-32 pb-10">
+           <div className="container mx-auto px-4 md:px-6 max-w-7xl h-full flex flex-col justify-start md:justify-center pt-20 md:pt-32 pb-4 md:pb-10">
               <JobCards />
            </div>
         </Scene>
 
         {/* Scene 4: Recruitment (Conditions) */}
         <Scene id="recruitment" onVisible={handleSceneVisible}>
-           <div className="container mx-auto px-6 max-w-7xl h-full flex flex-col justify-start md:justify-center pt-24 md:pt-32 pb-20">
+           <div className="container mx-auto px-4 md:px-6 max-w-7xl h-full flex flex-col justify-start md:justify-center pt-20 md:pt-32 pb-4 md:pb-20">
               <JobConditions />
            </div>
         </Scene>
 
         {/* Scene 5: Data */}
         <Scene id="data" onVisible={handleSceneVisible} className="bg-gradient-to-b from-theme-base to-theme-sand/20">
-          <div className="container mx-auto px-6 max-w-7xl h-full flex flex-col justify-center py-12">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl h-full flex flex-col justify-center py-8 md:py-12">
              <div className="w-full max-w-5xl mx-auto">
                <StatsSection />
              </div>
@@ -119,11 +118,11 @@ const App: React.FC = () => {
         
         {/* Scene 6: Access & Apply */}
         <Scene id="access" onVisible={handleSceneVisible}>
-          <div className="container mx-auto px-6 max-w-5xl h-full flex flex-col justify-start md:justify-center pt-24 md:pt-32 pb-32 md:pb-24 overflow-y-auto no-scrollbar">
-            <div className="space-y-16">
+          <div className="container mx-auto px-4 md:px-6 max-w-5xl h-full flex flex-col justify-start md:justify-center pt-20 md:pt-32 pb-16 md:pb-24 overflow-y-auto no-scrollbar">
+            <div className="space-y-8 md:space-y-16">
                <AccessMap />
                <CtaSection />
-               <div className="pt-8">
+               <div className="pt-4 md:pt-8">
                  <Footer />
                </div>
             </div>
@@ -131,9 +130,6 @@ const App: React.FC = () => {
         </Scene>
 
       </main>
-
-      {/* Mobile Bottom Navigation */}
-      {!isOpening && <MobileNav />}
 
       {/* Desktop Floating Navigation Dots */}
       <div className={`fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4 transition-opacity duration-1000 ${isOpening ? 'opacity-0' : 'opacity-100'}`}>
