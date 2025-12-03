@@ -123,10 +123,11 @@ export const JobCards: React.FC = () => {
             <div 
               onClick={() => toggleExpand(index)}
               className={`
-                group relative bg-white rounded-[2rem] p-6 lg:p-8 cursor-pointer transition-all duration-700 border border-transparent flex flex-col
+                group relative bg-white rounded-[2rem] p-6 lg:p-8 cursor-pointer flex flex-col
+                transition-all duration-500 ease-out border border-transparent
                 ${expandedIndex === index 
-                  ? 'shadow-card border-theme-terracotta/20 scale-[1.02] z-10' 
-                  : 'shadow-soft hover:shadow-card hover:-translate-y-2 hover:rotate-1'}
+                  ? 'shadow-[0_25px_50px_-12px_rgba(74,66,56,0.15)] border-theme-terracotta/20 scale-[1.02] z-10' 
+                  : 'shadow-soft hover:shadow-[0_25px_50px_-12px_rgba(74,66,56,0.15)] hover:scale-[1.02] hover:-translate-y-1'}
               `}
             >
               <div className="flex justify-between items-start mb-4 lg:mb-6">
@@ -212,7 +213,7 @@ export const JobCards: React.FC = () => {
                           onClick={(e) => scrollToRecruitment(index, e)}
                           className="flex w-full items-center justify-center gap-2 bg-white border border-theme-terracotta/30 text-theme-terracotta py-3 rounded-xl font-bold text-sm hover:bg-theme-terracotta hover:text-white transition-all duration-300 shadow-sm hover:shadow-glow"
                         >
-                           応募要項を見る <ArrowDown className="w-4 h-4" />
+                           募集要項を見る <ArrowDown className="w-4 h-4" />
                         </button>
                       </div>
                    </div>
